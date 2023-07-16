@@ -233,6 +233,7 @@ namespace HUST.Core.Services
             }
 
             // Lấy thông tin dictionary dùng gần nhất
+
             var lstDictionary = await _userRepository.SelectObjects<Dictionary>(new Dictionary<string, object>()
             {
                 { nameof(Models.Entity.dictionary.user_id), user.UserId }
@@ -245,22 +246,29 @@ namespace HUST.Core.Services
             user.DictionaryId = lastDictionary.DictionaryId;
 
             // Cập nhật thời điểm xem dictionary
+            //if (lastDictionary != null)
+            //{
+            var dictionary_did = lastDictionary.DictionaryId;
+
             var _ = await _dictionaryRepository.Update(new
             {
-                dictionary_id = lastDictionary.DictionaryId,
+                dictionary_id = dictionary_did,
                 last_view_at = DateTime.Now
             });
+            //}
 
             // Xóa token, session nếu có
             this.RemoveCurrentSession();
             // Sinh token, session
             var sessionId = this.GenerateSession(user);
+            var token = this.GenerateTokenActivateAccount(user.UserId.ToString());
             // Gán session vào response trả về
             this.SetResponseSessionCookie(sessionId);
 
             res.OnSuccess(new
             {
-                SessionId = sessionId,
+                Token = token,
+                //SessionId = sessionId,
                 user.UserId,
                 user.UserName,
                 user.DisplayName,

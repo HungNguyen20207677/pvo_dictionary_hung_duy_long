@@ -241,7 +241,7 @@ namespace HUST.Core.Services
             var tables = new string[]
             {
                 nameof(Models.Entity.concept),
-                nameof(example_relationship)
+                nameof(view_example_relationship)
             };
 
             // Không dùng từ "params"

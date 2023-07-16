@@ -29,8 +29,8 @@ namespace HUST.Infrastructure.Repositories
         public async Task<bool> CloneDictionaryData(Guid sourceDictionaryId, Guid destDictionaryId, IDbTransaction transaction = null)
         {
             var parameters = new DynamicParameters();
-            parameters.Add("$SourceDictionaryId", sourceDictionaryId);
-            parameters.Add("$DestDictionaryId", destDictionaryId);
+            parameters.Add("@SourceDictionaryId", sourceDictionaryId);
+            parameters.Add("@DestDictionaryId", destDictionaryId);
 
             var storeName = "Proc_Dictionary_CloneDictionaryData";
             if (transaction != null)
@@ -63,7 +63,7 @@ namespace HUST.Infrastructure.Repositories
         public async Task<bool> DeleteDictionaryData(Guid dictionaryId, IDbTransaction transaction = null)
         {
             var parameters = new DynamicParameters();
-            parameters.Add("$DictionaryId", dictionaryId);
+            parameters.Add("@DictionaryId", dictionaryId);
 
             var storeName = "Proc_Dictionary_DeleteDictionaryData";
             if (transaction != null)
