@@ -99,9 +99,9 @@ namespace HUST.Infrastructure.Repositories
         public async Task<bool> TransferDictionaryData(Guid sourceDictionaryId, Guid destDictionaryId, bool isDeleteData, IDbTransaction transaction = null)
         {
             var parameters = new DynamicParameters();
-            parameters.Add("$SourceDictionaryId", sourceDictionaryId);
-            parameters.Add("$DestDictionaryId", destDictionaryId);
-            parameters.Add("$IsDeleteData", isDeleteData);
+            parameters.Add("@SourceDictionaryId", sourceDictionaryId);
+            parameters.Add("@DestDictionaryId", destDictionaryId);
+            parameters.Add("@IsDeleteData", isDeleteData);
 
             var storeName = "Proc_Dictionary_TransferDictionaryData";
             if (transaction != null)
