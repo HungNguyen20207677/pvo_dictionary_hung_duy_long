@@ -99,9 +99,9 @@ namespace HUST.Infrastructure.Repositories
         public async Task<bool> TransferDictionaryData(Guid sourceDictionaryId, Guid destDictionaryId, bool isDeleteData, IDbTransaction transaction = null)
         {
             var parameters = new DynamicParameters();
-            parameters.Add("$SourceDictionaryId", sourceDictionaryId);
-            parameters.Add("$DestDictionaryId", destDictionaryId);
-            parameters.Add("$IsDeleteData", isDeleteData);
+            parameters.Add("@SourceDictionaryId", sourceDictionaryId);
+            parameters.Add("@DestDictionaryId", destDictionaryId);
+            parameters.Add("@IsDeleteData", isDeleteData);
 
             var storeName = "Proc_Dictionary_TransferDictionaryData";
             if (transaction != null)
@@ -134,10 +134,10 @@ namespace HUST.Infrastructure.Repositories
         public async Task<DictionaryNumberRecord> GetNumberRecord(Guid dictionaryId)
         {
             var parameters = new DynamicParameters();
-            parameters.Add("$DictionaryId", dictionaryId);
+            parameters.Add("@DictionaryId", dictionaryId);
             // Kết quả đầu ra
-            parameters.Add("$NumberConcept", dbType: DbType.Int32, direction: ParameterDirection.Output);
-            parameters.Add("$NumberExample", dbType: DbType.Int32, direction: ParameterDirection.Output);
+            parameters.Add("@NumberConcept", dbType: DbType.Int32, direction: ParameterDirection.Output);
+            parameters.Add("@NumberExample", dbType: DbType.Int32, direction: ParameterDirection.Output);
 
             var storeName = "Proc_Dictionary_GetNumberRecord";
             using (var connection = await this.CreateConnectionAsync())
@@ -152,8 +152,8 @@ namespace HUST.Infrastructure.Repositories
             // Trả về kết quả filter
             return new DictionaryNumberRecord
             {
-                NumberConcept = parameters.Get<int?>("$NumberConcept"),
-                NumberExample = parameters.Get<int?>("$NumberExample"),
+                NumberConcept = parameters.Get<int?>("@NumberConcept"),
+                NumberExample = parameters.Get<int?>("@NumberExample"),
             };
         }
         #endregion
