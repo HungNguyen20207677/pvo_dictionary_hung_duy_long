@@ -409,9 +409,9 @@ namespace HUST.Core.Services
             var tables = new string[]
             {
                 nameof(concept),
-                nameof(concept_relationship),
-                nameof(example),
-                nameof(example_relationship)
+                nameof(view_concept_relationship),
+                nameof(view_example),
+                nameof(view_example_relationship)
             };
 
             var param = new Dictionary<string, Dictionary<string, object>>()
@@ -422,15 +422,15 @@ namespace HUST.Core.Services
                 },
                 {
                     nameof(concept_relationship),
-                    new Dictionary<string, object> { { nameof(concept_relationship.dictionary_id), dictionaryId } }
+                    new Dictionary<string, object> { { nameof(view_concept_relationship.dictionary_id), dictionaryId } }
                 },
                 {
                     nameof(example),
-                    new Dictionary<string, object> { { nameof(example.dictionary_id), dictionaryId } }
+                    new Dictionary<string, object> { { nameof(view_example.dictionary_id), dictionaryId } }
                 },
                 {
                     nameof(example_relationship),
-                    new Dictionary<string, object> { { nameof(example_relationship.dictionary_id), dictionaryId } }
+                    new Dictionary<string, object> { { nameof(view_example_relationship.dictionary_id), dictionaryId } }
                 }
             };
 
@@ -454,9 +454,9 @@ namespace HUST.Core.Services
             var startCol = TemplateConfig.StartColData;
 
             var lstConcept = exportData[nameof(concept)] as List<concept> ?? new List<concept>();
-            var lstConceptRel = exportData[nameof(concept_relationship)] as List<concept_relationship> ?? new List<concept_relationship>();
-            var lstExample = exportData[nameof(example)] as List<example> ?? new List<example>();
-            var lstExampleRel = exportData[nameof(example_relationship)] as List<example_relationship> ?? new List<example_relationship>();
+            var lstConceptRel = exportData[nameof(view_concept_relationship)] as List<view_concept_relationship> ?? new List<view_concept_relationship>();
+            var lstExample = exportData[nameof(view_example)] as List<view_example> ?? new List<view_example>();
+            var lstExampleRel = exportData[nameof(view_example_relationship)] as List<view_example_relationship> ?? new List<view_example_relationship>();
 
             // Bind vào sheet concept
             var ws = sheets[TemplateConfig.WorksheetName.Concept]; 
