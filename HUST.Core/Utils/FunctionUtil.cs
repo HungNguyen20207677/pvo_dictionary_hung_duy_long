@@ -272,7 +272,7 @@ namespace HUST.Core.Utils
         /// <returns></returns>
         public static bool CheckStringHasHightlight(string str)
         {
-            return Regex.IsMatch(str, "<h.*>.*</h>");
+            return Regex.IsMatch(str, "<h.*>.*</h.>");
         }
 
         /// <summary>
