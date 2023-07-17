@@ -31,7 +31,7 @@ namespace HUST.Infrastructure.Repositories
             using (var connection = await this.CreateConnectionAsync())
             {
                 var parameters = new DynamicParameters();
-                parameters.Add("@DictionaryId", param.DictionaryId);
+                //parameters.Add("@DictionaryId", param.DictionaryId);
                 parameters.Add("@Keyword", param.Keyword);
                 parameters.Add("@ToneId", param.ToneId);
                 parameters.Add("@ModeId", param.ModeId);

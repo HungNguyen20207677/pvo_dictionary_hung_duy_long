@@ -417,10 +417,10 @@ namespace HUST.Core.Services
         public async Task<IServiceResult> SearchExample(SearchExampleParam param)
         {
             var res = new ServiceResult();
-            if (param.DictionaryId == null || param.DictionaryId == Guid.Empty)
-            {
-                param.DictionaryId = this.ServiceCollection.AuthUtil.GetCurrentDictionaryId();
-            }
+            //if (param.DictionaryId == null || param.DictionaryId == Guid.Empty)
+            //{
+            //    param.DictionaryId = this.ServiceCollection.AuthUtil.GetCurrentDictionaryId();
+            //}
 
             var data = await _repository.SearchExample(param);
 
