@@ -181,8 +181,8 @@ namespace HUST.Core.Services
             // Check đầu vào
             if (example == null 
                 || example.ExampleId == Guid.Empty
-                || example.DictionaryId == null
-                || example.DictionaryId == Guid.Empty
+                //|| example.DictionaryId == null
+                //|| example.DictionaryId == Guid.Empty
                 || string.IsNullOrWhiteSpace(example.DetailHtml) 
                 || !FunctionUtil.CheckStringHasHightlight(example.DetailHtml))
             {
@@ -196,7 +196,7 @@ namespace HUST.Core.Services
             var savedExample = await _repository.SelectObject<Example>(new Dictionary<string, object>
             {
                 { nameof(Models.Entity.example.example_id), example.ExampleId },
-                { nameof(Models.Entity.example.dictionary_id), example.DictionaryId },
+                //{ nameof(Models.Entity.example.dictionary_id), example.DictionaryId },
             }) as Example;
 
             if (savedExample == null)
