@@ -421,15 +421,15 @@ namespace HUST.Core.Services
                     new Dictionary<string, object> { { nameof(concept.dictionary_id), dictionaryId } }
                 },
                 {
-                    nameof(concept_relationship),
+                    nameof(view_concept_relationship),
                     new Dictionary<string, object> { { nameof(view_concept_relationship.dictionary_id), dictionaryId } }
                 },
                 {
-                    nameof(example),
+                    nameof(view_example),
                     new Dictionary<string, object> { { nameof(view_example.dictionary_id), dictionaryId } }
                 },
                 {
-                    nameof(example_relationship),
+                    nameof(view_example_relationship),
                     new Dictionary<string, object> { { nameof(view_example_relationship.dictionary_id), dictionaryId } }
                 }
             };
