@@ -149,12 +149,12 @@ namespace HUST.Api.Controllers
         /// <param name="dictionaryId"></param>
         /// <returns></returns>
         [HttpGet("search_concept")]
-        public async Task<IServiceResult> SearchConcept([FromQuery] string searchKey, string dictionaryId, bool? isSearchSoundex)
+        public async Task<IServiceResult> SearchConcept([FromQuery] string searchKey, string dictionaryId)
         {
             var res = new ServiceResult();
             try
             {
-                return await _service.SearchConcept(searchKey, dictionaryId, isSearchSoundex);
+                return await _service.SearchConcept(searchKey, dictionaryId);
             }
             catch (Exception ex)
             {
