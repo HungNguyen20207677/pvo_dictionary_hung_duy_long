@@ -422,15 +422,25 @@ namespace HUST.Core.Services
             //    param.DictionaryId = this.ServiceCollection.AuthUtil.GetCurrentDictionaryId();
             //}
 
-            var data = await _repository.SearchExample(param);
+            //var data = await _repository.SearchExample(param);
 
-            // TODO: Xem xét rule sắp xếp (theo created date?)
-            res.Data = data.Select(x => new
-            {
-                x.ExampleId,
-                x.Detail,
-                x.DetailHtml
-            });
+            //// TODO: Xem xét rule sắp xếp (theo created date?)
+            //res.Data = data.Select(x => new
+            //{
+            //    x.ExampleId,
+            //    x.Detail,
+            //    x.DetailHtml
+            //});
+
+            param.Keyword = FunctionUtil.NormalizeText(param.Keyword);
+            res.Data = (await _repository.SearchExample(param)).Select(
+                    x => new
+                    {
+                        x.ExampleId,
+                        x.Detail,
+                        x.DetailHtml,
+                    }
+                ).OrderBy(x => x.ExampleId);
 
             return res;
         }

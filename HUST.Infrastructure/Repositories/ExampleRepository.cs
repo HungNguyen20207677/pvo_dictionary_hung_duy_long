@@ -32,21 +32,21 @@ namespace HUST.Infrastructure.Repositories
             {
                 var parameters = new DynamicParameters();
                 //parameters.Add("@DictionaryId", param.DictionaryId);
-                parameters.Add("@Keyword", param.Keyword);
-                parameters.Add("@ToneId", param.ToneId);
-                parameters.Add("@ModeId", param.ModeId);
-                parameters.Add("@RegisterId", param.RegisterId);
-                parameters.Add("@NuanceId", param.NuanceId);
-                parameters.Add("@DialectId", param.DialectId);
+                parameters.Add("@keyword", param.Keyword);
+                parameters.Add("@toneId", param.ToneId);
+                parameters.Add("@modeId", param.ModeId);
+                parameters.Add("@registerId", param.RegisterId);
+                parameters.Add("@nuanceId", param.NuanceId);
+                parameters.Add("@dialectId", param.DialectId);
 
                 string strListLinkedConceptId = null;
                 if(param.ListLinkedConceptId != null && param.ListLinkedConceptId.Count >= 0)
                 {
                     strListLinkedConceptId = SerializeUtil.SerializeObject(param.ListLinkedConceptId);
                 }
-                parameters.Add("@ListLinkedConceptId", strListLinkedConceptId);
-                parameters.Add("@IsSearchUndecided", param.IsSearchUndecided);
-                parameters.Add("@IsFulltextSearch", param.IsFulltextSearch);
+                parameters.Add("@listLinkedConceptId", strListLinkedConceptId);
+                parameters.Add("@isSearchUndecided", param.IsSearchUndecided);
+                //parameters.Add("@IsFulltextSearch", param.IsFulltextSearch);
 
                 var res = await connection.QueryAsync<example>(
                     sql: "Proc_Example_SearchExample",
