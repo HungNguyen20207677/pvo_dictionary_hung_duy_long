@@ -433,12 +433,14 @@ namespace HUST.Core.Services
             //});
 
             param.Keyword = FunctionUtil.NormalizeText(param.Keyword);
+
             res.Data = (await _repository.SearchExample(param)).Select(
                     x => new
                     {
                         x.ExampleId,
                         x.Detail,
                         x.DetailHtml,
+                        
                     }
                 ).OrderBy(x => x.ExampleId);
 

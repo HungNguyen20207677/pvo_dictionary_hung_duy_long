@@ -67,6 +67,7 @@ namespace HUST.Core.Models.DTO
         /// </summary>
         public List<ViewExampleRelationship> ListExampleRelationship { get; set; }
 
+
         public string ToneName { get; set; }
         public string ModeName { get; set; }
         public string RegisterName { get; set; }
