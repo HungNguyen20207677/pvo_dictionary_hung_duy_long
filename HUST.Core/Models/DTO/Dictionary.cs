@@ -1,5 +1,6 @@
 ﻿using Dapper.Contrib.Extensions;
 using System;
+using System.Text.Json.Serialization;
 
 namespace HUST.Core.Models.DTO
 {
@@ -17,6 +18,7 @@ namespace HUST.Core.Models.DTO
         /// <summary>
         /// Id người dùng
         /// </summary>
+        [JsonIgnore]
         public Guid? UserId { get; set; }
 
         /// <summary>
@@ -27,6 +29,7 @@ namespace HUST.Core.Models.DTO
         /// <summary>
         /// Lần cuối truy cập
         /// </summary>
+        [JsonIgnore]
         public DateTime? LastViewAt { get; set; }
     }
 }

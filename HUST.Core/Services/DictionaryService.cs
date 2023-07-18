@@ -90,6 +90,12 @@ namespace HUST.Core.Services
                 .OrderByDescending(x => x.LastViewAt)
                 .ThenByDescending(x => x.CreatedDate)
                 .ThenBy(x => x.DictionaryName)
+                .Select(x => new
+                {
+                    x.DictionaryId,
+                    x.DictionaryName,
+                    x.LastViewAt
+                })
                 .ToList();
 
             return res;
@@ -162,9 +168,9 @@ namespace HUST.Core.Services
                         transaction.Commit();
                         res.OnSuccess(new
                         {
-                            SessionId = sessionId,
-                            user.UserId,
-                            user.UserName,
+                            //SessionId = sessionId,
+                            //user.UserId,
+                            //user.UserName,
                             dict.DictionaryId,
                             dict.DictionaryName,
                             LastViewAt = now
