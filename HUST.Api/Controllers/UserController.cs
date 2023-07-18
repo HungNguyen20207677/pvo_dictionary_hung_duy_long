@@ -56,7 +56,7 @@ namespace HUST.Api.Controllers
         /// <param name="param"></param>
         /// <returns></returns>
         [HttpPut("update_password")]
-        public async Task<IServiceResult> UpdatePassword([FromBody] PasswordParam param)
+        public async Task<IServiceResult> UpdatePassword([FromBody] UpdatePasswordParam param)
         {
             var res = new ServiceResult();
             try

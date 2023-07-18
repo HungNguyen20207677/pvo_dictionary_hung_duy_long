@@ -261,7 +261,9 @@ namespace HUST.Core.Services
             this.RemoveCurrentSession();
             // Sinh token, session
             var sessionId = this.GenerateSession(user);
-            var token = this.GenerateTokenActivateAccount(user.UserId.ToString());
+
+            var token = this.GenerateTokenActivateAccount(user.UserId.ToString());//token xác thực người dùng
+
             // Gán session vào response trả về
             this.SetResponseSessionCookie(sessionId);
 

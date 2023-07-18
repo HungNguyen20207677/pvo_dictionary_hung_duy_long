@@ -7,11 +7,11 @@ using System.Threading.Tasks;
 namespace HUST.Core.Models.Param
 {
     /// <summary>
-    /// Param chung cho xử lý api account
+    /// Param xử lý reset mật khẩu
     /// </summary>
-    public class AccountParam
+    public class UpdatePasswordParam
     {
-        public string Username { get; set; }
-        public string Password { get; set; }
+        public string OldPassword { get; set; }
+        public string NewPassword { get; set; }
     }
 }
