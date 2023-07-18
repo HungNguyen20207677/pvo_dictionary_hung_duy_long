@@ -38,23 +38,23 @@ namespace HUST.Infrastructure.Repositories
         {
             // Thiết lập các tham số
             var parameters = new DynamicParameters();
-            parameters.Add("$UserId", userId);
-            parameters.Add("$SearchFilter", searchFilter);
-            parameters.Add("$PageIndex", pageIndex);
-            parameters.Add("$PageSize", pageSize);
-            parameters.Add("$DateFrom", dateFrom);
-            parameters.Add("$DateTo", dateTo);
+            parameters.Add("@UserId", userId);
+            parameters.Add("@SearchFilter", searchFilter);
+            parameters.Add("@PageIndex", pageIndex);
+            parameters.Add("@PageSize", pageSize);
+            parameters.Add("@DateFrom", dateFrom);
+            parameters.Add("@DateTo", dateTo);
 
 
             // Kết quả đầu ra
-            parameters.Add("$TotalRecord", dbType: DbType.Int32, direction: ParameterDirection.Output);
-            parameters.Add("$TotalPage", dbType: DbType.Int32, direction: ParameterDirection.Output);
+            parameters.Add("@TotalRecord", dbType: DbType.Int32, direction: ParameterDirection.Output);
+            parameters.Add("@TotalPage", dbType: DbType.Int32, direction: ParameterDirection.Output);
 
             IEnumerable<audit_log> res; 
             using (var connection = await this.CreateConnectionAsync())
             {
                 res = await connection.QueryAsync<audit_log>(
-                    sql: $"Proc_Log_GetLogsFilterPaging",
+                    sql: @"Proc_Log_GetLogsFilterPaging",
                     param: parameters,
                     commandType: CommandType.StoredProcedure,
                     commandTimeout: ConnectionTimeout);
@@ -63,8 +63,8 @@ namespace HUST.Infrastructure.Repositories
             // Trả về kết quả filter
             return new FilterResult<AuditLog>
             {
-                TotalPages = parameters.Get<int?>("$TotalPage"),
-                TotalRecords = parameters.Get<int?>("$TotalRecord"),
+                TotalPages = parameters.Get<int?>("@TotalPage"),
+                TotalRecords = parameters.Get<int?>("@TotalRecord"),
                 Data = res != null ? this.ServiceCollection.Mapper.Map<IEnumerable<AuditLog>>(res) : null
             };
         }

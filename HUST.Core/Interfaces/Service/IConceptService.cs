@@ -55,7 +55,7 @@ namespace HUST.Core.Interfaces.Service
         /// <param name="dictionaryId"></param>
         /// <param name="isSearchSoundex"></param>
         /// <returns></returns>
-        Task<IServiceResult> SearchConcept(string searchKey, string dictionaryId, bool? isSearchSoundex);
+        Task<IServiceResult> SearchConcept(string searchKey, string dictionaryId);
 
         /// <summary>
         /// Lấy ra mối quan hệ liên kết giữa concept con và concept cha.

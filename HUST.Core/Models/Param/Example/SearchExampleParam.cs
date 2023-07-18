@@ -11,7 +11,7 @@ namespace HUST.Core.Models.Param
     /// </summary>
     public class SearchExampleParam
     {
-        public Guid? DictionaryId { get; set; }
+        //public Guid? DictionaryId { get; set; }
         public string Keyword { get; set; }
         public string ToneId { get; set; }
         public string ModeId { get; set; }
@@ -29,6 +29,6 @@ namespace HUST.Core.Models.Param
         /// <summary>
         /// Sử dụng fulltext search trong mysql
         /// </summary>
-        public bool? IsFulltextSearch { get; set; }
+        //public bool? IsFulltextSearch { get; set; }
     }
 }

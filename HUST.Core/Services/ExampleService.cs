@@ -181,8 +181,8 @@ namespace HUST.Core.Services
             // Check đầu vào
             if (example == null 
                 || example.ExampleId == Guid.Empty
-                || example.DictionaryId == null
-                || example.DictionaryId == Guid.Empty
+                //|| example.DictionaryId == null
+                //|| example.DictionaryId == Guid.Empty
                 || string.IsNullOrWhiteSpace(example.DetailHtml) 
                 || !FunctionUtil.CheckStringHasHightlight(example.DetailHtml))
             {
@@ -196,7 +196,7 @@ namespace HUST.Core.Services
             var savedExample = await _repository.SelectObject<Example>(new Dictionary<string, object>
             {
                 { nameof(Models.Entity.example.example_id), example.ExampleId },
-                { nameof(Models.Entity.example.dictionary_id), example.DictionaryId },
+                //{ nameof(Models.Entity.example.dictionary_id), example.DictionaryId },
             }) as Example;
 
             if (savedExample == null)
@@ -417,20 +417,32 @@ namespace HUST.Core.Services
         public async Task<IServiceResult> SearchExample(SearchExampleParam param)
         {
             var res = new ServiceResult();
-            if (param.DictionaryId == null || param.DictionaryId == Guid.Empty)
-            {
-                param.DictionaryId = this.ServiceCollection.AuthUtil.GetCurrentDictionaryId();
-            }
+            //if (param.DictionaryId == null || param.DictionaryId == Guid.Empty)
+            //{
+            //    param.DictionaryId = this.ServiceCollection.AuthUtil.GetCurrentDictionaryId();
+            //}
 
-            var data = await _repository.SearchExample(param);
+            //var data = await _repository.SearchExample(param);
 
-            // TODO: Xem xét rule sắp xếp (theo created date?)
-            res.Data = data.Select(x => new
-            {
-                x.ExampleId,
-                x.Detail,
-                x.DetailHtml
-            });
+            //// TODO: Xem xét rule sắp xếp (theo created date?)
+            //res.Data = data.Select(x => new
+            //{
+            //    x.ExampleId,
+            //    x.Detail,
+            //    x.DetailHtml
+            //});
+
+            param.Keyword = FunctionUtil.NormalizeText(param.Keyword);
+
+            res.Data = (await _repository.SearchExample(param)).Select(
+                    x => new
+                    {
+                        x.ExampleId,
+                        x.Detail,
+                        x.DetailHtml,
+                        
+                    }
+                ).OrderBy(x => x.ExampleId);
 
             return res;
         }

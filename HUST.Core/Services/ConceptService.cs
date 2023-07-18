@@ -241,7 +241,7 @@ namespace HUST.Core.Services
             var tables = new string[]
             {
                 nameof(Models.Entity.concept),
-                nameof(example_relationship)
+                nameof(view_example_relationship)
             };
 
             // Không dùng từ "params"
@@ -294,7 +294,7 @@ namespace HUST.Core.Services
         /// <param name="dictionaryId"></param>
         /// <param name="isSearchSoundex"></param>
         /// <returns></returns>
-        public async Task<IServiceResult> SearchConcept(string searchKey, string dictionaryId, bool? isSearchSoundex)
+        public async Task<IServiceResult> SearchConcept(string searchKey, string dictionaryId)
         {
             var res = new ServiceResult();
             if (string.IsNullOrEmpty(dictionaryId))
@@ -302,7 +302,7 @@ namespace HUST.Core.Services
                 dictionaryId = this.ServiceCollection.AuthUtil.GetCurrentDictionaryId()?.ToString();
             }
             searchKey = FunctionUtil.NormalizeText(searchKey);
-            res.Data = (await _repository.SearchConcept(searchKey, dictionaryId, isSearchSoundex)).OrderBy(x => x.Title);
+            res.Data = (await _repository.SearchConcept(searchKey, dictionaryId)).OrderBy(x => x.Title);
 
             return res;
         }
