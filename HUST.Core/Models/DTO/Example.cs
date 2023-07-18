@@ -11,6 +11,14 @@ namespace HUST.Core.Models.DTO
     public class Example : BaseDTO
     {
         /// <summary>
+        /// Id khóa chính
+        /// </summary>
+
+        [Key]
+        public Guid ExampleId { get; set; }
+        
+        
+        /// <summary>
         /// Nội dung ví dụ
         /// </summary>
         public string Detail { get; set; }
@@ -50,14 +58,7 @@ namespace HUST.Core.Models.DTO
         /// </summary>
         public Guid? DialectId { get; set; }
 
-        /// <summary>
-        /// Id khóa chính
-        /// </summary>
-
-        [JsonIgnore]
-        [Key]
-        public Guid ExampleId { get; set; }
-
+        
         /// <summary>
         /// Id dictionary
         /// </summary>

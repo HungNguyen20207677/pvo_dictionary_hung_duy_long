@@ -405,8 +405,52 @@ namespace HUST.Core.Services
             mapExample.NuanceName = viewExample.nuance_name;
             mapExample.DialectName = viewExample.dialect_name;
             mapExample.ListExampleRelationship = this.ServiceCollection.Mapper.Map<List<ViewExampleRelationship>>(lstViewExampleRel);
-            
-            return res.OnSuccess(mapExample);
+
+            var Tone = new
+            {
+                ToneId = mapExample.ToneId,
+                ToneName = mapExample.ToneName
+            };
+
+            var Mode = new
+            {
+                ModeId = mapExample.ModeId,
+                ModeName = mapExample.ModeName
+            };
+
+            var Register = new
+            {
+                RegisterId = mapExample.RegisterId,
+                RegisterName = mapExample.RegisterName
+            };
+
+            var Nuance = new
+            {
+                NuanceId = mapExample.NuanceId,
+                NuanceName = mapExample.NuanceName
+            };
+
+            var Dialect = new
+            {
+                DialectId = mapExample.DialectId,
+                DialectName = mapExample.DialectName
+            };
+
+            //return res.OnSuccess(mapExample);
+            var resultData = new
+            {
+                mapExample.ExampleId,
+                mapExample.Detail,
+                mapExample.DetailHtml,
+                mapExample.Note,
+                Tone,
+                Mode,
+                Register,
+                Nuance,
+                Dialect
+            };
+
+            return res.OnSuccess(resultData);
         }
 
         /// <summary>

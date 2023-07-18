@@ -24,7 +24,7 @@ namespace HUST.Core.Models.Param
         /// <summary>
         /// Tìm kiếm example không liên kết concept
         /// </summary>
-        public bool? IsSearchUndecided { get; set; }
+        public bool? SearchUndecided { get; set; }
 
         /// <summary>
         /// Sử dụng fulltext search trong mysql

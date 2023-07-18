@@ -45,7 +45,7 @@ namespace HUST.Infrastructure.Repositories
                     strListLinkedConceptId = SerializeUtil.SerializeObject(param.ListLinkedConceptId);
                 }
                 parameters.Add("@listLinkedConceptId", strListLinkedConceptId);
-                parameters.Add("@isSearchUndecided", param.IsSearchUndecided);
+                parameters.Add("@searchUndecided", param.SearchUndecided);
                 //parameters.Add("@IsFulltextSearch", param.IsFulltextSearch);
 
                 var res = await connection.QueryAsync<example>(
