@@ -173,7 +173,14 @@ namespace HUST.Core.Services
                 SortOrder = 0
             });
 
-            res.Data = data?.OrderBy(x => x.SortOrder);
+            res.Data = data?.Select(x => new
+            {
+                x.ExampleLinkId,
+                x.SysExampleLinkId,
+                x.ExampleLinkName,
+                x.ExampleLinkType,
+                x.SortOrder
+            }).OrderBy(x => x.SortOrder);
 
             return res;
         }
@@ -190,12 +197,12 @@ namespace HUST.Core.Services
             var lstExampleLink = (await this.GetListExampleLink()).Data;
             res.Data = new
             {
-                ListExampleLink = lstExampleLink,
-                ListTone = this.ServiceCollection.Mapper.Map<List<Tone>>(configData.ListTone).OrderBy(x => x.SortOrder),
-                ListMode = this.ServiceCollection.Mapper.Map<List<Mode>>(configData.ListMode).OrderBy(x => x.SortOrder),
-                ListRegister = this.ServiceCollection.Mapper.Map<List<Register>>(configData.ListRegister).OrderBy(x => x.SortOrder),
-                ListNuance = this.ServiceCollection.Mapper.Map<List<Nuance>>(configData.ListNuance).OrderBy(x => x.SortOrder),
-                ListDialect = this.ServiceCollection.Mapper.Map<List<Dialect>>(configData.ListDialect).OrderBy(x => x.SortOrder),
+                //ListExampleLink = lstExampleLink,
+                Tone = this.ServiceCollection.Mapper.Map<List<Tone>>(configData.ListTone).OrderBy(x => x.SortOrder),
+                Mode = this.ServiceCollection.Mapper.Map<List<Mode>>(configData.ListMode).OrderBy(x => x.SortOrder),
+                Register = this.ServiceCollection.Mapper.Map<List<Register>>(configData.ListRegister).OrderBy(x => x.SortOrder),
+                Nuance = this.ServiceCollection.Mapper.Map<List<Nuance>>(configData.ListNuance).OrderBy(x => x.SortOrder),
+                Dialect = this.ServiceCollection.Mapper.Map<List<Dialect>>(configData.ListDialect).OrderBy(x => x.SortOrder),
             };
 
             return res;
