@@ -124,23 +124,23 @@ namespace HUST.Core.Services
 
             // Upload ảnh đại diện
             string avatarLink = null;
-            if (param.Avatar != null)
+            if (param.avatar != null)
             {
-                if (!FunctionUtil.IsImageFile(param.Avatar))
+                if (!FunctionUtil.IsImageFile(param.avatar))
                 {
                     return res.OnError(ErrorCode.Err9003, ErrorMessage.Err9003);
                 }
 
-                if (!FunctionUtil.IsValidFileSize(param.Avatar))
+                if (!FunctionUtil.IsValidFileSize(param.avatar))
                 {
                     return res.OnError(ErrorCode.Err9002, ErrorMessage.Err9002);
                 }
 
-                if (param.Avatar.Length > 0)
+                if (param.avatar.Length > 0)
                 {
                     using (var ms = new MemoryStream())
                     {
-                        param.Avatar.CopyTo(ms);
+                        param.avatar.CopyTo(ms);
                         var fileBytes = ms.ToArray();
 
                         // Để bảo mật hơn thì dùng Guid.NewGuid().ToString()
@@ -156,10 +156,10 @@ namespace HUST.Core.Services
             var result = await _repository.Update(new 
             {
                 user_id = (Guid)userId,
-                display_name = param.DisplayName?.Trim(),
-                full_name = param.FullName?.Trim(),
-                birthday = param.Birthday != null ? DateTime.Parse(param.Birthday) : (DateTime?)null,
-                position = param.Position?.Trim(),
+                display_name = param.displayName?.Trim(),
+                full_name = param.fullName?.Trim(),
+                birthday = param.birthday != null ? DateTime.Parse(param.birthday) : (DateTime?)null,
+                position = param.position?.Trim(),
                 avatar = avatarLink ?? user.Avatar
             });
 
@@ -171,7 +171,7 @@ namespace HUST.Core.Services
             res.OnSuccess();
             res.Data = new
             {
-                DisplayName = param.DisplayName ?? user.DisplayName,
+                DisplayName = param.displayName ?? user.DisplayName,
                 Avatar = avatarLink ?? user.Avatar
             };
             return res;
