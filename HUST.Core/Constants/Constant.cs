@@ -26,6 +26,7 @@ namespace HUST.Core.Constants
     public static class FileExtension
     {
         public const string Excel2007 = ".xlsx";
+        public const string Excel2003 = ".xls";
         public static readonly string[] Image = {".png", ".jpeg", ".jpg"};
     }
 

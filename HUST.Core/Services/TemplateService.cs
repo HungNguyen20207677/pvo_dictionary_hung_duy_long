@@ -55,7 +55,7 @@ namespace HUST.Core.Services
         /// Lấy template nhập khẩu dạng byte
         /// </summary>
         /// <returns></returns>
-        public async Task<byte[]> DowloadTemplateImportDictionary()
+        public async Task<byte[]> DowloadTemplateImportDictionary(int fileType)
         {
             var configData = await this.GetConfigData();
             if (configData == null)
