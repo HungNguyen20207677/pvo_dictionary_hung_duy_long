@@ -15,11 +15,6 @@ namespace HUST.Core.Models.DTO
         public Guid ConceptId { get; set; }
 
         /// <summary>
-        /// Id dictionary
-        /// </summary>
-        public Guid? DictionaryId { get; set; }
-
-        /// <summary>
         /// Tên
         /// </summary>
         public string Title { get; set; }
@@ -28,6 +23,12 @@ namespace HUST.Core.Models.DTO
         /// Mô tả/định nghĩa
         /// </summary>
         public string Description { get; set; }
+
+        /// <summary>
+        /// Id dictionary
+        /// </summary>
+        public Guid? DictionaryId { get; set; }
+
 
         /// <summary>
         /// Title được chuẩn hóa
