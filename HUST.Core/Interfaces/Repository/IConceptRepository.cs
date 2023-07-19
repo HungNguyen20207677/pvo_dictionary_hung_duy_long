@@ -16,6 +16,6 @@ namespace HUST.Core.Interfaces.Repository
         /// <param name="dictionaryId"></param>
         /// <param name="isSearchSoundex"></param>
         /// <returns></returns>
-        Task<List<Concept>> SearchConcept(string searchKey, string dictionaryId);
+        Task<List<Concept>> SearchConcept(string userId, string searchKey, string dictionaryId);
     }
 }
