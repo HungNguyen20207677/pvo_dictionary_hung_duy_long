@@ -36,23 +36,17 @@ namespace HUST.Api.Controllers
         /// </summary>
         /// <returns></returns>
         [HttpGet("download")]
-        public async Task<IActionResult> DownloadTemplateImportDictionary(int fileType)
+        public async Task<IActionResult> DownloadTemplateImportDictionary()
         {
             var res = new ServiceResult();
             try
             {
-                var fileBytes = await _service.DowloadTemplateImportDictionary(fileType);
+                var fileBytes = await _service.DowloadTemplateImportDictionary();
                 if(fileBytes == null || fileBytes.Length == 0)
                 {
                     return StatusCode((int)HttpStatusCode.NoContent);
                 }
                 return File(fileBytes, FileContentType.OctetStream, TemplateConfig.FileDefaultName.DownloadDefaultTemplate);
-                //else if(filetype == 1)
-                //{
-                //    return statuscode((int)httpstatuscode.nocontent);
-
-                //}
-                //return file(filebytes, filecontenttype.octetstream, templateconfig.filedefaultname.downloaddefaulttemplate1);
             }
             catch (Exception ex)
             {
