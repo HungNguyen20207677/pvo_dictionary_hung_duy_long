@@ -16,9 +16,8 @@ namespace HUST.Core.Interfaces.Service
         /// <summary>
         /// Lấy template nhập khẩu
         /// </summary>
-        /// <param name="fileType"></param>
         /// <returns></returns>
-        Task<byte[]> DowloadTemplateImportDictionary(int fileType);
+        Task<byte[]> DowloadTemplateImportDictionary();
 
         /// <summary>
         /// Xuất khẩu
