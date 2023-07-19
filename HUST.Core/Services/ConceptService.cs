@@ -279,7 +279,7 @@ namespace HUST.Core.Services
 
             return res.OnSuccess(new
             {
-                ConceptId = concept?.concept_id,
+                //ConceptId = concept?.concept_id,
                 Title = concept?.title,
                 Description = concept?.description,
                 //NormalizedTitle = concept?.normalized_title,
