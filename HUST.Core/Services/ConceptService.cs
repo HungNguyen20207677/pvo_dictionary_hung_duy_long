@@ -271,8 +271,8 @@ namespace HUST.Core.Services
             var lstExample = lstViewExampleRel?.Select(x => new
             {
                 ExampleId = x.example_id,
-                Detail = x.example,
-                DetailHtml = x.example_html,
+                Detail = x.detail,
+                DetailHtml = x.detail_html,
                 ExampleLinkId = x.example_link_id,
                 ExampleLinkName = x.example_link_name
             }).OrderBy(x => x.Detail).ToList();
@@ -744,8 +744,8 @@ namespace HUST.Core.Services
                 .Select((x, i) => new
                 {
                     x.ExampleId,
-                    x.Example,
-                    x.ExampleHtml,
+                    x.Detail,
+                    x.DetailHtml,
                     x.ExampleLinkId,
                     x.ExampleLinkName,
                     SortOrder = i
@@ -913,8 +913,8 @@ namespace HUST.Core.Services
                 .Select((x, i) => new
                 {
                     x.ExampleId,
-                    x.Example,
-                    x.ExampleHtml,
+                    x.Detail,
+                    x.DetailHtml,
                     x.ExampleLinkId,
                     x.ExampleLinkName,
                     SortOrder = i

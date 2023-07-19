@@ -21,10 +21,10 @@ namespace HUST.Core.Models.DTO
         public Guid? ExampleId { get; set; }
 
         [JsonIgnore]
-        public string Example { get; set; }
+        public string Detail { get; set; }
 
         [JsonIgnore]
-        public string ExampleHtml { get; set; }
+        public string DetailHtml { get; set; }
 
 
         [JsonIgnore]

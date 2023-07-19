@@ -9,8 +9,8 @@ namespace HUST.Core.Models.Entity
         public Guid? concept_id { get; set; }
         public string concept { get; set; }
         public Guid? example_id { get; set; }
-        public string example { get; set; }
-        public string example_html { get; set; }
+        public string detail { get; set; }
+        public string detail_html { get; set; }
         public Guid? example_link_id { get; set; }
         public string example_link_name { get; set; }
         public DateTime? concept_created_date { get; set; }
