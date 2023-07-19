@@ -144,14 +144,7 @@ namespace HUST.Core.Services
                 SortOrder = 0
             });
 
-            res.Data = data?.Select(x => new
-            {
-                x.ConceptLinkId,
-                x.SysConceptLinkId,
-                x.ConceptLinkName,
-                x.ConceptLinkType,
-                x.SortOrder
-            }).OrderBy(x => x.SortOrder);
+            res.Data = data?.OrderBy(x => x.SortOrder);
 
             return res;
         }
