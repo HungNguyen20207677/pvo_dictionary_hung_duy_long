@@ -17,6 +17,6 @@ namespace HUST.Core.Models.Param
         /// <summary>
         /// Có xóa dữ liệu trước khi chuyển dữ liệu hay không
         /// </summary>
-        public bool? IsDeleteData { get; set; }
+        public bool? IsDeleteDestData { get; set; }
     }
 }

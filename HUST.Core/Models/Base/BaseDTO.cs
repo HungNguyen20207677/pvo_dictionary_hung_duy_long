@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Linq;
+using System.Text.Json.Serialization;
 
 namespace HUST.Core.Models
 {
@@ -11,11 +12,14 @@ namespace HUST.Core.Models
         /// <summary>
         /// Thời điểm tạo
         /// </summary>
+        [JsonIgnore]
         public DateTime? CreatedDate { get; set; }
 
         /// <summary>
         /// Thời điểm sửa
         /// </summary>
+        
+        [JsonIgnore]
         public DateTime? ModifiedDate { get; set; }
 
         /// <summary>

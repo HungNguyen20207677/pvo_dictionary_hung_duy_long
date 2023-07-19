@@ -16,11 +16,6 @@ namespace HUST.Core.Models.ServerObject
         public ServiceResultStatus Status { get; set; } = ServiceResultStatus.Success;
 
         /// <summary>
-        /// Dữ liệu trả về
-        /// </summary>
-        public object Data { get; set; }
-
-        /// <summary>
         /// Thông báo
         /// </summary>
         public string Message { get; set; }
@@ -39,6 +34,11 @@ namespace HUST.Core.Models.ServerObject
         /// Mã lỗi (số)
         /// </summary>
         public int ErrorCode { get; set; }
+
+        /// <summary>
+        /// Dữ liệu trả về
+        /// </summary>
+        public object Data { get; set; }
         #endregion
 
         #region Constructors

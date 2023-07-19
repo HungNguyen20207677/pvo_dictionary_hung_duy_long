@@ -67,7 +67,7 @@ namespace HUST.Api.Controllers
             var res = new ServiceResult();
             try
             {
-                return await _service.Register(param.UserName, param.Password);
+                return await _service.Register(param.Username, param.Password);
             }
             catch (Exception ex)
             {
@@ -88,7 +88,7 @@ namespace HUST.Api.Controllers
             var res = new ServiceResult();
             try
             {
-                return await _service.SendActivateEmail(param.UserName, param.Password);
+                return await _service.SendActivateEmail(param.Username, param.Password);
             }
             catch (Exception ex)
             {
@@ -104,12 +104,12 @@ namespace HUST.Api.Controllers
         /// <param name="param"></param>
         /// <returns></returns>
         [HttpGet("activate_account"), AllowAnonymous]
-        public async Task<IServiceResult> ActivateAccount(string token)
+        public async Task<IServiceResult> ActivateAccount(string verificationToken)
         {
             var res = new ServiceResult();
             try
             {
-                return await _service.ActivateAccount(token);
+                return await _service.ActivateAccount(verificationToken);
             }
             catch (Exception ex)
             {
@@ -130,7 +130,7 @@ namespace HUST.Api.Controllers
             var res = new ServiceResult();
             try
             {
-                return await _service.Login(param.UserName, param.Password);
+                return await _service.Login(param.Username, param.Password);
             }
             catch (Exception ex)
             {
@@ -208,12 +208,12 @@ namespace HUST.Api.Controllers
         /// <param name="email"></param>
         /// <returns></returns>
         [HttpPut("reset_password"), AllowAnonymous]
-        public async Task<IServiceResult> ResetPassword([FromBody]PasswordParam param)
+        public async Task<IServiceResult> ResetPassword([FromBody]ResetPasswordParam param)
         {
             var res = new ServiceResult();
             try
             {
-                return await _service.ResetPassword(param.Token, param.NewPassword);
+                return await _service.ResetPassword(param.verificationToken, param.NewPassword);
             }
             catch (Exception ex)
             {

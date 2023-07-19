@@ -12,10 +12,10 @@ namespace HUST.Core.Models.Param
     /// </summary>
     public class UpdateUserInfoParam
     {
-        public IFormFile Avatar { get; set; }
-        public string DisplayName { get; set; }
-        public string FullName { get; set; }
-        public string Birthday { get; set; }
-        public string Position { get; set; }
+        public string displayName { get; set; }
+        public string fullName { get; set; }
+        public string birthday { get; set; }
+        public string position { get; set; }
+        public IFormFile avatar { get; set; }
     }
 }

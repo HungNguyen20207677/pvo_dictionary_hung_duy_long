@@ -187,7 +187,7 @@ namespace HUST.Api.Controllers
             var res = new ServiceResult();
             try
             {
-                return await _service.TransferDictionary(param.SourceDictionaryId, param.DestDictionaryId, param.IsDeleteData);
+                return await _service.TransferDictionary(param.SourceDictionaryId, param.DestDictionaryId, param.IsDeleteDestData);
             }
             catch (Exception ex)
             {
