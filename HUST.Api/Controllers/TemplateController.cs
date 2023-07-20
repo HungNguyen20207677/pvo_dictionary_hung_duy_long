@@ -133,17 +133,17 @@ namespace HUST.Api.Controllers
         /// </summary>
         /// <returns></returns>
         [HttpPost("import")]
-        public async Task<IServiceResult> ImportDictionary()
+        public async Task<IServiceResult> ImportDictionary([FromForm] ImportDictionaryParam param)
         {
             var res = new ServiceResult();
             try
             {
-                var file = HttpContext.Request.Form.Files[0];
+                param.file = HttpContext.Request.Form.Files[0];
                 var dictionaryId = HttpContext.Request.Form["dictionaryId"].ToString();
 
                 //var data =  (await _service.ImportDictionary(dictionaryId, file)).Data as byte[];
                 //return File(data, FileContentType.Excel, "File error.xlsx");
-                return await _service.ImportDictionary(dictionaryId, file);
+                return await _service.ImportDictionary(dictionaryId, param.file);
             }
             catch (Exception ex)
             {

@@ -32,8 +32,7 @@ namespace HUST.Api.Controllers
         /// <param name="dateTo"></param>
         /// <returns></returns>
         [HttpGet("get_logs")]
-        public async Task<IServiceResult> GetLogs([FromQuery]string searchFilter, 
-            int? pageIndex, int? pageSize, string dateFrom, string dateTo)
+        public async Task<IServiceResult> GetLogs([FromQuery]string dateFrom, string dateTo, int? pageIndex, int? pageSize, string searchFilter)
         {
             var res = new ServiceResult();
             try

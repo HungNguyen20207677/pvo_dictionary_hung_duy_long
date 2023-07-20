@@ -134,15 +134,15 @@ namespace HUST.Core.Services
                 { nameof(concept_link.user_id), userId }
             }) as List<ConceptLink>;
 
-            data?.Add(new ConceptLink
-            {
-                ConceptLinkId = Guid.Empty,
-                SysConceptLinkId = Guid.Empty,
-                UserId = userId,
-                ConceptLinkName = "No link",
-                ConceptLinkType = (int)ConceptLinkType.NoLink,
-                SortOrder = 0
-            });
+            //data?.Add(new ConceptLink
+            //{
+            //    ConceptLinkId = Guid.Empty,
+            //    SysConceptLinkId = Guid.Empty,
+            //    UserId = userId,
+            //    ConceptLinkName = "No link",
+            //    ConceptLinkType = (int)ConceptLinkType.NoLink,
+            //    SortOrder = 0
+            //});
 
             res.Data = data?.Select(x => new
             {
@@ -170,15 +170,15 @@ namespace HUST.Core.Services
                 { nameof(example_link.user_id), userId }
             }) as List<ExampleLink>;
 
-            data?.Add(new ExampleLink
-            {
-                ExampleLinkId = Guid.Empty,
-                SysExampleLinkId = Guid.Empty,
-                UserId = userId,
-                ExampleLinkName = "No link",
-                ExampleLinkType = (int)ExampleLinkType.NoLink,
-                SortOrder = 0
-            });
+            //data?.Add(new ExampleLink
+            //{
+            //    ExampleLinkId = Guid.Empty,
+            //    SysExampleLinkId = Guid.Empty,
+            //    UserId = userId,
+            //    ExampleLinkName = "No link",
+            //    ExampleLinkType = (int)ExampleLinkType.NoLink,
+            //    SortOrder = 0
+            //});
 
             res.Data = data?.Select(x => new
             {

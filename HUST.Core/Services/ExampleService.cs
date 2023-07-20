@@ -177,6 +177,9 @@ namespace HUST.Core.Services
         public async Task<IServiceResult> UpdateExample(Example example)
         {
             var res = new ServiceResult();
+            
+            var user = this.ServiceCollection.AuthUtil.GetCurrentUser();
+            example.DictionaryId = user.DictionaryId;
 
             // Check đầu vào
             if (example == null 
@@ -190,7 +193,7 @@ namespace HUST.Core.Services
             }
 
             example.DetailHtml = example.DetailHtml.Trim();
-            example.Detail = FunctionUtil.StripHtml(example.DetailHtml);
+            //example.Detail = FunctionUtil.StripHtml(example.DetailHtml);
 
             // Lấy ra bản ghi đã lưu trong db
             var savedExample = await _repository.SelectObject<Example>(new Dictionary<string, object>
@@ -199,14 +202,14 @@ namespace HUST.Core.Services
                 //{ nameof(Models.Entity.example.dictionary_id), example.DictionaryId },
             }) as Example;
 
-            if (savedExample == null)
-            {
-                return res.OnError(ErrorCode.Err4000, ErrorMessage.Err4000);
-            } 
-            else if (savedExample.ModifiedDate != example.ModifiedDate) // Kiểm tra dữ liệu bị cũ
-            {
-                return res.OnError(ErrorCode.Err9998, ErrorMessage.Err9998);
-            }
+            //if (savedExample == null)
+            //{
+            //    return res.OnError(ErrorCode.Err4000, ErrorMessage.Err4000);
+            //} 
+            //else if (savedExample.ModifiedDate != example.ModifiedDate) // Kiểm tra dữ liệu bị cũ
+            //{
+            //    return res.OnError(ErrorCode.Err9998, ErrorMessage.Err9998);
+            //}
 
             // Check trùng
             // Có 1 cách khác để check trùng là select bản ghi có detail_html tương ứng, kiểm tra id != example_id hiện tại
