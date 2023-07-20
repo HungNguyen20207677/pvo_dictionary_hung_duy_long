@@ -297,20 +297,12 @@ namespace HUST.Core.Services
         public async Task<IServiceResult> SearchConcept(string searchKey, string dictionaryId)
         {
             var res = new ServiceResult();
-
-            // Get the current user object
-            var curUser = this.ServiceCollection.AuthUtil.GetCurrentUser();
-
-            // Extract the userId string from the User object
-            var userId = curUser?.UserId.ToString();
-
-
             if (string.IsNullOrEmpty(dictionaryId))
             {
                 dictionaryId = this.ServiceCollection.AuthUtil.GetCurrentDictionaryId()?.ToString();
             }
             searchKey = FunctionUtil.NormalizeText(searchKey);
-            res.Data = (await _repository.SearchConcept(userId, searchKey, dictionaryId)).OrderBy(x => x.Title);
+            res.Data = (await _repository.SearchConcept(searchKey, dictionaryId)).OrderBy(x => x.Title);
 
             return res;
         }

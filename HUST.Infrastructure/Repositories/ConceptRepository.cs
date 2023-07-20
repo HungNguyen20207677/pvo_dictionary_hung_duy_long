@@ -27,13 +27,11 @@ namespace HUST.Infrastructure.Repositories
         /// <param name="dictionaryId"></param>
         /// <param name="isSearchSoundex"></param>
         /// <returns></returns>
-        public async Task<List<Concept>> SearchConcept(string userId, string searchKey, string dictionaryId)
+        public async Task<List<Concept>> SearchConcept(string searchKey, string dictionaryId)
         {
             using (var connection = await this.CreateConnectionAsync())
             {
                 var parameters = new DynamicParameters();
-
-                parameters.Add("@userId", userId);
                 parameters.Add("@searchKey", searchKey);
                 parameters.Add("@dictionaryId", dictionaryId);
 
