@@ -13,21 +13,21 @@ namespace HUST.Core.Models.DTO
     /// </summary>
     public class Concept_search_history : BaseDTO
     {
-        /// <summary>
-        /// Id khóa chính
-        /// </summary>
-        [Key]
-        public Guid concept_search_history_id { get; set; }
+        ///// <summary>
+        ///// Id khóa chính
+        ///// </summary>
+        //[Key]
+        //public Guid concept_search_history_id { get; set; }
 
-        /// <summary>
-        /// Id người dùng
-        /// </summary>
-        public Guid user_id { get; set; }
+        ///// <summary>
+        ///// Id người dùng
+        ///// </summary>
+        //public Guid user_id { get; set; }
 
-        /// <summary>
-        /// Id dictionary
-        /// </summary>
-        public Guid dictionary_id { get; set; }
+        ///// <summary>
+        ///// Id dictionary
+        ///// </summary>
+        //public Guid dictionary_id { get; set; }
 
         /// <summary>
         /// list_concept_search
