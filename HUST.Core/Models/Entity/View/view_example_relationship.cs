@@ -7,7 +7,7 @@ namespace HUST.Core.Models.Entity
     {
         public Guid? dictionary_id { get; set; }
         public Guid? concept_id { get; set; }
-        public string concept { get; set; }
+        public string title { get; set; }
         public Guid? example_id { get; set; }
         public string detail { get; set; }
         public string detail_html { get; set; }

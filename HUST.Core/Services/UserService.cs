@@ -96,7 +96,18 @@ namespace HUST.Core.Services
 
             user.Password = null;
 
-            return res.OnSuccess(user); ;
+            return res.OnSuccess(new
+            {
+                user.UserId,
+                user.UserName,
+                user.Email,
+                user.FullName,
+                user.DisplayName,
+                user.Position,
+                user.Birthday,
+                user.Avatar,
+                user.Status
+            }); ;
         }
 
         /// <summary>
