@@ -32,8 +32,10 @@ namespace HUST.Infrastructure.Repositories
             using (var connection = await this.CreateConnectionAsync())
             {
                 var parameters = new DynamicParameters();
+                var userId = this.ServiceCollection.AuthUtil.GetCurrentUserId();
                 parameters.Add("@searchKey", searchKey);
                 parameters.Add("@dictionaryId", dictionaryId);
+                parameters.Add("@userId", userId);
 
                 var res = await connection.QueryAsync<concept>(
                     sql: "Proc_Concept_SearchConcept",
@@ -47,6 +49,29 @@ namespace HUST.Infrastructure.Repositories
                 }
 
                 return new List<Concept>();
+            }
+        }
+
+        public async Task<List<Concept_search_history>> GetSavedSearch(string userId, string dictionaryId)
+        {
+            using (var connection = await this.CreateConnectionAsync())
+            {
+                var parameters = new DynamicParameters();
+                parameters.Add("@dictionaryId", dictionaryId);
+                parameters.Add("@userId", userId);
+
+                var res = await connection.QueryAsync<concept_search_history>(
+                    sql: "Proc_Get_Saved_Search",
+                    param: parameters,
+                    commandType: CommandType.StoredProcedure,
+                    commandTimeout: ConnectionTimeout);
+
+                if (res != null)
+                {
+                    return this.ServiceCollection.Mapper.Map<List<Concept_search_history>>(res);
+                }
+
+                return new List<Concept_search_history>();
             }
         }
         #endregion

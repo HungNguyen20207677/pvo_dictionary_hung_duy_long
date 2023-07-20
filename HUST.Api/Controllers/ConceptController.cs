@@ -229,6 +229,22 @@ namespace HUST.Api.Controllers
             
             return res;
         }
+
+        [HttpGet("get_saved_search")]
+        public async Task<IServiceResult> GetSavedSearch()
+        {
+            var res = new ServiceResult();
+            try
+            {
+                return await _service.GetSavedSearch();
+            }
+            catch (Exception ex)
+            {
+                this.ServiceCollection.HandleControllerException(res, ex);
+            }
+
+            return res;
+        }
         #endregion
     }
 }

@@ -15,7 +15,7 @@ namespace HUST.Core.Models.DTO
         public Guid? DictionaryId { get; set; }
 
         [JsonIgnore]
-        public string Concept { get; set; }
+        public string Title { get; set; }
 
         [JsonIgnore]
         public Guid? ExampleId { get; set; }
