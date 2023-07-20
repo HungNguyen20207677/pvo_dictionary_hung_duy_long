@@ -12,10 +12,10 @@ namespace HUST.Core.Models.ServerObject
     public class ExampleRelationshipImport : BaseImport
     {
         [ImportColumn(TemplateConfig.ExampleRelationshipSheet.Example)]
-        public string ExampleHtml { get; set; }
+        public string DetailHtml { get; set; }
 
         [ImportColumn(TemplateConfig.ExampleRelationshipSheet.Concept)]
-        public string Concept { get; set; }
+        public string Title { get; set; }
 
         [ImportColumn(TemplateConfig.ExampleRelationshipSheet.Relation)]
         public string ExampleLinkName { get; set; }
@@ -39,7 +39,7 @@ namespace HUST.Core.Models.ServerObject
             };
 
             // Validate concept
-            if (string.IsNullOrEmpty(Concept))
+            if (string.IsNullOrEmpty(Title))
             {
                 res.IsValid = false;
                 res.ListErrorMessage.Add(string.Format(ImportValidateErrorMessage.Required, "Concept"));
@@ -51,7 +51,7 @@ namespace HUST.Core.Models.ServerObject
             }
 
             // Validate example
-            if (string.IsNullOrEmpty(ExampleHtml))
+            if (string.IsNullOrEmpty(DetailHtml))
             {
                 res.IsValid = false;
                 res.ListErrorMessage.Add(string.Format(ImportValidateErrorMessage.Required, "Example"));

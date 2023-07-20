@@ -632,8 +632,8 @@ namespace HUST.Core.Services
             foreach (var row in exampleRelRows)
             {
                 // Validate
-                var findConcept = lstConcept.Find(x => x.Title == row.Concept);
-                var findExample = lstExample.Find(x => x.DetailHtml == row.ExampleHtml);
+                var findConcept = lstConcept.Find(x => x.Title == row.Title);
+                var findExample = lstExample.Find(x => x.DetailHtml == row.DetailHtml);
                 var findRelation = configData.ListExampleLink.Find(x => x.example_link_name == row.ExampleLinkName);
 
                 var validateRes = row.ValidateBusinessMater(lstExampleRel, findConcept, findExample, findRelation);
