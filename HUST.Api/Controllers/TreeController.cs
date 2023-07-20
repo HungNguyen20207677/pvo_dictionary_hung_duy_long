@@ -45,12 +45,12 @@ namespace HUST.Api.Controllers
         /// <param name="conceptId"></param>
         /// <returns></returns>
         [HttpGet("get_tree")]
-        public async Task<IServiceResult> GetTree(Guid conceptId)
+        public async Task<IServiceResult> GetTree(Guid conceptId, string conceptName)
         {
             var res = new ServiceResult();
             try
             {
-                return await _conceptService.GetTree(conceptId);
+                return await _conceptService.GetTree(conceptId, conceptName);
             }
             catch (Exception ex)
             {
