@@ -10,11 +10,13 @@ using HUST.Core.Utils;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Net.Http.Headers;
+using Org.BouncyCastle.Bcpg;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Concept_History = HUST.Core.Models.DTO.Concept_search_history;
 
 namespace HUST.Core.Services
 {
@@ -271,8 +273,8 @@ namespace HUST.Core.Services
             var lstExample = lstViewExampleRel?.Select(x => new
             {
                 ExampleId = x.example_id,
-                Detail = x.example,
-                DetailHtml = x.example_html,
+                Detail = x.detail,
+                DetailHtml = x.detail_html,
                 ExampleLinkId = x.example_link_id,
                 ExampleLinkName = x.example_link_name
             }).OrderBy(x => x.Detail).ToList();
@@ -676,7 +678,7 @@ namespace HUST.Core.Services
         /// </summary>
         /// <param name="conceptId"></param>
         /// <returns></returns>
-        public async Task<IServiceResult> GetTree(Guid conceptId)
+        public async Task<IServiceResult> GetTree(Guid conceptId, string conceptName)
         {
             var res = new ServiceResult();
             if (conceptId == Guid.Empty)
@@ -744,8 +746,8 @@ namespace HUST.Core.Services
                 .Select((x, i) => new
                 {
                     x.ExampleId,
-                    x.Example,
-                    x.ExampleHtml,
+                    x.Detail,
+                    x.DetailHtml,
                     x.ExampleLinkId,
                     x.ExampleLinkName,
                     SortOrder = i
@@ -777,10 +779,10 @@ namespace HUST.Core.Services
 
             res.Data = new
             {
-                Concept = concept,
+                //Concept = concept,
                 ListParent = listParent,
                 ListChildren = listChildren,
-                ListExample = listExample,
+                //ListExample = listExample,
                 ListCountExampleLink = listCountExampleLink
             };
             return res;
@@ -913,12 +915,23 @@ namespace HUST.Core.Services
                 .Select((x, i) => new
                 {
                     x.ExampleId,
-                    x.Example,
-                    x.ExampleHtml,
-                    x.ExampleLinkId,
-                    x.ExampleLinkName,
+                    x.Detail,
+                    x.DetailHtml,
+                    //x.ExampleLinkId,
+                    //x.ExampleLinkName,
                     SortOrder = i
                 }).ToList();
+
+            return res;
+        }
+
+        public async Task<IServiceResult> GetSavedSearch()
+        {
+            var res = new ServiceResult();
+            string userId = this.ServiceCollection.AuthUtil.GetCurrentUser().ToString();
+            string dictionaryId = this.ServiceCollection.AuthUtil.GetCurrentDictionaryId().ToString();
+
+            res.Data = (await _repository.GetSavedSearch( userId, dictionaryId));
 
             return res;
         }

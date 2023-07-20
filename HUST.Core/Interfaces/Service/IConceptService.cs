@@ -86,7 +86,7 @@ namespace HUST.Core.Interfaces.Service
         /// </summary>
         /// <param name="conceptId"></param>
         /// <returns></returns>
-        Task<IServiceResult> GetTree(Guid conceptId);
+        Task<IServiceResult> GetTree(Guid conceptId, string conceptName);
 
         /// <summary>
         /// Lấy dữ liệu tree: các concept cha của 1 concept
@@ -108,6 +108,8 @@ namespace HUST.Core.Interfaces.Service
         /// <param name="conceptId"></param>
         /// <returns></returns>
         Task<IServiceResult> GetLinkedExampleByRelationshipType(Guid conceptId, Guid exampleLinkId);
+
+        Task<IServiceResult> GetSavedSearch();
         #endregion
 
 

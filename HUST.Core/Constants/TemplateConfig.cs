@@ -18,6 +18,8 @@ namespace HUST.Core.Constants
             public const string DefaultTemplateProtect = "default_template_protect";
 
             public const string DownloadDefaultTemplate = "HUSTPVO_ImportTemplate.xlsx";
+            public const string DownloadDefaultTemplate1 = "HUSTPVO_ImportTemplate.xls";
+
             public const string ExportFile = "HUSTPVO_{0}_{1}.xlsx";
         }
 

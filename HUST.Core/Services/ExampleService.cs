@@ -479,12 +479,12 @@ namespace HUST.Core.Services
             param.Keyword = FunctionUtil.NormalizeText(param.Keyword);
 
             res.Data = (await _repository.SearchExample(param)).Select(
-                    x => new
+                    (x, i) => new
                     {
                         x.ExampleId,
                         x.Detail,
                         x.DetailHtml,
-                        
+                        SortOrder = i+1,
                     }
                 ).OrderBy(x => x.ExampleId);
 

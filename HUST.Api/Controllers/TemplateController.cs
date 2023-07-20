@@ -36,17 +36,31 @@ namespace HUST.Api.Controllers
         /// </summary>
         /// <returns></returns>
         [HttpGet("download")]
-        public async Task<IActionResult> DownloadTemplateImportDictionary()
+        public async Task<IActionResult> DownloadTemplateImportDictionary(int fileType)
         {
             var res = new ServiceResult();
             try
             {
-                var fileBytes = await _service.DowloadTemplateImportDictionary();
-                if(fileBytes == null || fileBytes.Length == 0)
+                var fileBytes = await _service.DowloadTemplateImportDictionary(fileType);
+                string fileName = TemplateConfig.FileDefaultName.DownloadDefaultTemplate;
+                string fileExtension;
+
+                if (fileBytes == null || fileBytes.Length == 0)
                 {
                     return StatusCode((int)HttpStatusCode.NoContent);
                 }
-                return File(fileBytes, FileContentType.OctetStream, TemplateConfig.FileDefaultName.DownloadDefaultTemplate);
+
+                if (fileType == 1)
+                {
+                    fileName = TemplateConfig.FileDefaultName.DownloadDefaultTemplate1;
+                    fileExtension = FileExtension.Excel2003;
+                }
+                //else
+                //{
+                //    return StatusCode((int)HttpStatusCode.BadRequest);
+                //}
+
+                return File(fileBytes, FileContentType.OctetStream, fileName);
             }
             catch (Exception ex)
             {
@@ -54,6 +68,7 @@ namespace HUST.Api.Controllers
                 return StatusCode((int)HttpStatusCode.InternalServerError, res);
             }
         }
+
 
         /// <summary>
         /// Xuất khẩu
@@ -67,7 +82,7 @@ namespace HUST.Api.Controllers
             {
                 // Lấy thông tin của từ điển
                 var dict = (await _dictionaryService.GetDictionaryById(dictionaryId)).Data as Dictionary;
-                if(dict == null)
+                if (dict == null)
                 {
                     return StatusCode((int)HttpStatusCode.NoContent);
                 }
@@ -89,6 +104,7 @@ namespace HUST.Api.Controllers
                 return StatusCode((int)HttpStatusCode.InternalServerError, res);
             }
         }
+
 
         /// <summary>
         /// Backup data và gửi vào email
