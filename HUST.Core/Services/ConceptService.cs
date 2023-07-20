@@ -915,8 +915,8 @@ namespace HUST.Core.Services
                     x.ExampleId,
                     x.Detail,
                     x.DetailHtml,
-                    x.ExampleLinkId,
-                    x.ExampleLinkName,
+                    //x.ExampleLinkId,
+                    //x.ExampleLinkName,
                     SortOrder = i
                 }).ToList();
 
