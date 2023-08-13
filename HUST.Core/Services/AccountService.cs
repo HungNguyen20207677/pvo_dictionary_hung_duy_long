@@ -80,6 +80,30 @@ namespace HUST.Core.Services
                 return res;
             }
 
+            if (password.Length < 8 || password.Length > 16)
+            {
+                res.OnError(ErrorCode.Err9000, ErrorMessage.Err9000);
+                return res;
+            }
+
+            if (!password.Any(char.IsUpper))
+            {
+                res.OnError(ErrorCode.Err9000, ErrorMessage.Err9000);
+                return res;
+            }
+
+            if (!password.Any(char.IsDigit))
+            {
+                res.OnError(ErrorCode.Err9000, ErrorMessage.Err9000);
+                return res;
+            }
+
+            if (!password.Any(c => !char.IsLetterOrDigit(c)))
+            {
+                res.OnError(ErrorCode.Err9000, ErrorMessage.Err9000);
+                return res;
+            }
+
             // Kiểm tra tên đăng nhập (email) đã được sử dụng chưa
             var existUser = await _userRepository.SelectObject<User>(new Dictionary<string, object>()
             {
